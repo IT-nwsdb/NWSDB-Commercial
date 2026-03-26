@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <title>Overall Commercial Performance</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loadingScreen" class="loading-screen" aria-live="polite">
+    <div class="loading-box">
+      <div class="loader"></div>
+      <h1>Overall Commercial Performance</h1>
+      <p>Loading table...</p>
+    </div>
+  </div>
+
+  <main id="app" class="app hidden">
+    <section id="tableView" class="table-view">
+      <div class="topbar">
+        <div>
+          <h2>Overall Commercial Performance</h2>
+          <p id="tableLabel">Single overall table</p>
+        </div>
+        <div class="actions">
+          <button id="saveBtn" type="button" class="primary-btn">Save to Cloud</button>
+          <button id="graphToggleBtn" type="button" class="ghost-btn">Graphs</button>
+          <button id="resetBtn" type="button" class="danger-btn">Reset Data</button>
+        </div>
+      </div>
+
+      <div id="statusBar" class="status-bar hidden"></div>
+
+      <div class="table-card">
+        <div id="tableFitStage" class="table-fit-stage">
+          <div id="tableScaleTarget" class="table-scale-target">
+            <table id="performanceTable" class="performance-table">
+              <colgroup>
+                <col class="section-col">
+                <col class="metric-col">
+                <col span="12" class="month-col">
+              </colgroup>
+              <thead id="tableHead"></thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="graphModal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="graphTitle">
+      <div class="modal-header">
+        <div>
+          <h3 id="graphTitle">Section Graph</h3>
+          <p id="graphSubtitle">Monthly trend view</p>
+        </div>
+        <button id="graphCloseBtn" type="button" class="modal-close-btn" aria-label="Close graph modal">×</button>
+      </div>
+      <div class="modal-controls">
+        <label for="graphSectionSelect" class="graph-label">Select section</label>
+        <select id="graphSectionSelect" class="graph-select">
+          <option value="Number of Connections">Number of Connections</option>
+          <option value="New Connection">New Connection</option>
+          <option value="Monthly billing &amp; collection Performance">Monthly billing &amp; collection Performance</option>
+          <option value="Cummulative billing &amp; collection Performance">Cummulative billing &amp; collection Performance</option>
+          <option value="Arrears">Arrears</option>
+          <option value="Other Performence">Other Performence</option>
+        </select>
+      </div>
+      <div class="graph-canvas-wrap modal-graph-wrap">
+        <canvas id="sectionGraphCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
